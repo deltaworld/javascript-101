@@ -1,5 +1,6 @@
 // window is our object
-// onload is our eventListener
+// onload is our eventListener will only perform the writeMessage function when 
+// the page has *finished* loading.
 // writeMessage is our function that we will run.
 
 window.onload = writeMessage;
@@ -13,4 +14,4 @@ the property .innerHTML
 */
 function writeMessage() {
     document.getElementById("helloMessage").innerHTML = "Write this message";
-}
+} 

@@ -1,13 +1,32 @@
-
+// feedback form:
+// http://www.academyclass.com/surveys/3592
 window.onload = function () {
  
     if ([].indexOf ) { // truthy statement for support ie9+
-        // initialise array of Flags for random numbers.
+        
+         // initialise array of Flags for random numbers.
         var numFlags = [];
-
-        for (var i = 0; i < 24; i++) {
-            // reFACTORed to a function that sets the square with a number.
-            setSquare(i);    
+        
+        function newCard() {
+            for (var i = 0; i < 24; i++) {
+                
+                // reFACTORed to a function that sets the square with a number.
+                setSquare(i);    
+            }
+        }
+        
+        newCard();
+        // On click run this function
+        document.getElementById("reload").onclick = function() {
+            // For loop resets array of flags
+            // The length of the array is 1-75
+            for (var j = 1; j < numFlags.length; j++ ) {
+                // Converts each box of array from a value of true to false
+                numFlags[j] = false;
+            }
+            newCard();
+            console.log("numFlags: " + numFlags);
+            return false;
         }
         
         // JS: Closure
@@ -80,12 +99,16 @@ window.onload = function () {
                 numFlags[newNum] = true;
                 // Publish
                 currSquareElement.innerHTML = newNum; // <td id="square0">73</td>
+                
+                currSquareElement.onclick = function() {
+                    
+                }
         
-            console.log(numFlags);
         }
-        
+     console.log(numFlags);
     } else {
         alert("Sorry, your browser doesn't support this script");
     }
+    
 }
 

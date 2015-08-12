@@ -28,3 +28,7 @@ th, td {
 #free {
     background-color: #F66;    
 }
+
+.pickedBG {
+    background-color: #F00; /* red */
+}

@@ -1,34 +1,64 @@
 window.onload = function () {
  
-    if (document.getElementById ) { // truthy statement
+    if ([].indexOf ) { // truthy statement
         for (var i = 0; i < 24; i++) {
-            // refactored to a function that sets the square with a number.
+            // reFACTORed to a function that sets the square with a number.
             setSquare(i);    
         }
         
         // JS: Closure
-        function setSquare(i) {
+        function setSquare(thisSquare) {
             
+            // Returns a random integer between min (included) and max (included)
+            function getRandomNumber(min, max) {
+                var newNum = Math.floor(Math.random() * (max - min + 1)) + min; 
+                return newNum;
+            }
+
+            function constructColumnArray(num, removeInt) {
+                // initialise array
+                var colInts = [];
             
+                // A nested for loop for creating num lots of numbers in an array.
+                for (var i = 0; i < num; i++) {
+                  for (var j = 0; j < num; j++) {
+                      //push through the inner loop number (j)
+                      colInts.push(j);
+                  }
+                }
+                // get the index value of the number we want to remove.
+                var index = colInts.indexOf(removeInt);
+                
+                // Splice only if the index exists; index = -1 -> number does not exist.
+                if (index > -1) {
+                  // from the position of 2 remove one value from the array.
+                  colInts.splice(index, 1);
+                }
+                // sort your array numerically
+                colInts.sort();
             
-            var factor = 15;
-            
-            // Refactor Current Square to an independent local variable.
-            var currSquare = "square" + i;  // "square0"
+                // return the array.
+                return colInts;
+            }
+            // CONSTANT
+            var FACTOR = 15;
+
+            // ReFACTOR Current Square to an independent local variable.
+            var currSquare = "square" + thisSquare;  // "square0"
             
             // The index refers to the square.no and the value of the array tells us the column number.
-            var colPlace = [0,0,0,0,0,1,1,1,1,1,2,2,2,2,3,3,3,3,3,4,4,4,4,4]; // we need to * 15
+            // https://goo.gl/U2rE5k jsBin playground
+            var colPlaces = constructColumnArray(5, 2);
             
-            //var newNum =  colPlace[i] * factor + getRandomNumber(factor);
-            var newNum = getRandomNumber( 
-                
-                // min
-                factor * colPlace[i] + 1, 
-                
-                // max
-                colPlace[i] + 1 * factor + (factor * colPlace[i]) - colPlace[i]
-                ); 
+            //Base multiplication for the start of the range
+            var colBasis = FACTOR * colPlaces[thisSquare]; // 0, 15, 30, 45, 60 (for each column)
             
+            // Defining the min and max of random number generated
+            var min = colBasis + 1; // reason we need to add 1, *1*-15, *16*-30
+            var max = FACTOR + colBasis; // the max will always be 15 more than the min.
+            
+            // Gets random number for each of the columns dynamically.
+            var newNum = getRandomNumber(min, max); 
             
             // This gets the current element from the HTML page.
             var currSquareElement = document.getElementById(currSquare); // <td id="square0"></td>
@@ -40,12 +70,4 @@ window.onload = function () {
         alert("Sorry, your browser doesn't support this script");
     }
 }
-
-function getRandomNumber(min, max) {
-                
-    var newNum = Math.floor(Math.random() * (max - min + 1)) + min; 
-    return newNum;
-}
-
-
 

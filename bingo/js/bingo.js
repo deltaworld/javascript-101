@@ -1,6 +1,9 @@
+// initialise array of Flags for random numbers.
+var numFlags = [];
+
 window.onload = function () {
  
-    if ([].indexOf ) { // truthy statement
+    if ([].indexOf ) { // truthy statement for support ie9+
         for (var i = 0; i < 24; i++) {
             // reFACTORed to a function that sets the square with a number.
             setSquare(i);    
@@ -43,29 +46,43 @@ window.onload = function () {
             // CONSTANT
             var FACTOR = 15;
 
-            // ReFACTOR Current Square to an independent local variable.
+            // Refactor Current Square to an independent local variable.
             var currSquare = "square" + thisSquare;  // "square0"
             
             // The index refers to the square.no and the value of the array tells us the column number.
             // https://goo.gl/U2rE5k jsBin playground
             var colPlaces = constructColumnArray(5, 2);
             
-            //Base multiplication for the start of the range
+            // Base multiplication for the start of the range
             var colBasis = FACTOR * colPlaces[thisSquare]; // 0, 15, 30, 45, 60 (for each column)
             
             // Defining the min and max of random number generated
             var min = colBasis + 1; // reason we need to add 1, *1*-15, *16*-30
             var max = FACTOR + colBasis; // the max will always be 15 more than the min.
             
-            // Gets random number for each of the columns dynamically.
-            var newNum = getRandomNumber(min, max); 
             
             // This gets the current element from the HTML page.
             var currSquareElement = document.getElementById(currSquare); // <td id="square0"></td>
             
-            //finds the required element and populates it with random number newNum
-            currSquareElement.innerHTML = newNum; // <td id="square0">73</td>
+            // finds the required element and populates it with random number newNum
+            // Check if not(Flag is true) // number hasn't been used.
+            
+            // initialise the random number variable.
+            var newNum;
+            // keep on generating a new random number as long as the flag is true.
+            // if the flag is empty, exit the loop.
+            do {    
+                // Gets random number for each of the columns dynamically.
+                newNum = getRandomNumber(min, max); 
+            } while (numFlags[newNum])
+                // Set Flag to newNum to true. ie turn flag on.
+                numFlags[newNum] = true;
+                // Publish
+                currSquareElement.innerHTML = newNum; // <td id="square0">73</td>
+        
+            console.log(numFlags);
         }
+        
     } else {
         alert("Sorry, your browser doesn't support this script");
     }

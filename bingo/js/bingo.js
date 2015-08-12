@@ -1,9 +1,10 @@
-// initialise array of Flags for random numbers.
-var numFlags = [];
 
 window.onload = function () {
  
     if ([].indexOf ) { // truthy statement for support ie9+
+        // initialise array of Flags for random numbers.
+        var numFlags = [];
+
         for (var i = 0; i < 24; i++) {
             // reFACTORed to a function that sets the square with a number.
             setSquare(i);    

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery Button</title>
+        <script src="../js/libs/jquery-2.1.4.js"></script>
+        <script>
+            $( document ).ready(function (){
+                $('button').click(function (){
+                    $("tr:even").addClass('red');
+                });
+            });
+        </script>
+        <style type="text/css">
+            .red { background-color: red; }
+        </style>
+    </head>
+    <body>
+        <h2 class="test">This is a heading</h2>
+        <p>This is a paragraph.</p>
+        <p class="test">This is another paragraph.</p>
+        <button>Click me</button>
+        <table border=1 width=300>
+            <tr>
+                <td>A</td>
+                <td>A</td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>A</td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>A</td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>A</td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>A</td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>A</td>
+                <td>A</td>
+            </tr>
+        </table>
+    </body>
+</html>

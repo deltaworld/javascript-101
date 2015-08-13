@@ -7,7 +7,8 @@ window.onload = function () {
          // initialise array of Flags for random numbers.
         var numFlags = [];
         
-        function newCard() {
+        // helper Method
+        function newCard() { 
             for (var i = 0; i < 24; i++) {
                 
                 // reFACTORed to a function that sets the square with a number.
@@ -100,8 +101,10 @@ window.onload = function () {
                 // Publish
                 currSquareElement.innerHTML = newNum; // <td id="square0">73</td>
                 
-                currSquareElement.onclick = function() {
-                    
+                currSquareElement.onclick = function () {
+                   // On click function will run on Object 
+                   this.className = "pickedBG"; // this === thingy
+                   // Class Name refers to CSS class specified by .pickedBG located in CSS alwing object color to change to red  
                 }
         
         }

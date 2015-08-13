@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery 1st Example</title>
+        <script src="../js/libs/jquery-2.1.4.js"></script>
+        <script>
+            
+            $( document ).ready (function () {
+                //Code will be executed when DOM is ready.
+                $('p').click(function (){
+                    // instruction for the click goes here.
+                    $(this).hide();
+                });
+            });
+            
+            
+        </script>
+    </head>
+    <body>
+        <p>If you click on me, I will disappear.</p>
+        <p>Click me away!</p>
+        <p>Click me too!</p>
+        
+    </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Drag and Drop with jQuery Game</title>
+        
+        <link rel="stylesheet" href="../js/libs/jqueryui/jquery-ui.css" type="text/css" />
+        
+        <script src="../js/libs/jquery-2.1.4.js"></script>
+        <script type="text/javascript" src="../js/libs/jqueryui/jquery-ui-1.11.4.js"></script>
+        
+        <style type="text/css">
+            #content {
+                height: 400px;
+                border: 1px solid black;
+            }
+            
+            #makeMeDraggable, #draggableHelper, #makeMeDroppable {
+                width: 300px;
+                height: 300px;
+            }
+            
+            #makeMeDraggable {
+                background: red;
+                float: left;
+            }
+            
+            #draggableHelper {
+                background: yellow;
+            }
+            /*Deprecated from ui.1.11 docs. Found in googlecode cache for 1.7.1*/
+            /*https://jquery-ui.googlecode.com/svn/tags/1.7.1/docs/draggable.html*/
+            #makeMeDraggable.ui-draggable-dragging { background: green; }
+            
+            #makeMeDroppable {
+                float: right;
+                border: 1px solid #999;
+                
+            }
+        </style>
+        
+        <script type="text/javascript">
+            $ (function () {
+                $('#makeMeDraggable').draggable({
+                    containment: 'parent',
+                    cursor: 'move',
+                    snap: '#content'
+                    // helper: myHelper,   // function
+                    // stop: handleDragStop
+                });
+                $('#makeMeDroppable').droppable(
+                    {
+                        drop: handleDropEvent
+                    }
+                    );
+            });
+            
+            function myHelper ( event ) {
+                return '<div id="draggableHelper">I am a helper - drag me!</div>';
+            }
+            
+            function handleDragStop( event, ui ) {
+                // parseInt converts Integers to Strings
+                var offsetXpos = parseInt(ui.offset.left); // ints 
+                var offsetYpos = parseInt(ui.offset.top);  // ints 
+                
+                // display position from offset (i.e. from where it used to be)
+                alert("Position x: " + offsetXpos + ", Position Y: " + offsetYpos ); // strings
+            }
+            
+            // The drop event takes two arguments: event, ui
+            function handleDropEvent( event, ui ) {
+                
+                // A sub-object of the ui object is draggable.
+                // http://api.jqueryui.com/droppable/#event-drop
+                
+                // draggable is a $object.
+                var $draggable = ui.draggable;
+                
+                // attr action of $ to extract the id of element.
+                var id = $draggable.attr('id');
+                console.log(id);
+                
+                //Objective: display ID of the draggable object in alert.
+                alert("I've been Dropped " + id);
+            }
+        </script>
+    </head>
+    <body>
+        <div id="content">
+            <div id="makeMeDraggable"></div>
+            <div id="makeMeDroppable"></div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <script type="text/javascript" src="../js/libs/jquery-2.1.4.js"></script>
+        <script>
+            $( function () {
+                $('#flip').click(function () {
+                    $('#panel').slideToggle();
+                })
+            });
+        </script>
+        <style type="text/css">
+                #panel, #flip  {
+                    padding: 5px;
+                    text-align: center;
+                    background-color: #e5eecc;
+                    border: solid 1px #c3c3c3;
+                }
+                
+                #panel {
+                    padding: 50px;
+                    display: none;
+                }
+        </style>
+    </head>
+    <body>
+        <div id="flip">Click to slide down pane</div>
+        <div id="panel">Hello World!</div>
+    </body>
+</html>

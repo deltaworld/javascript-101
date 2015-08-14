@@ -39,6 +39,8 @@
         </style>
         
         <script type="text/javascript">
+        // FEEDBACK FORM: JavaScript 201: Green Belt
+        // http://www.academyclass.com/surveys/3600
             $ (function () {
                 $('#makeMeDraggable').draggable({
                     containment: 'parent',
@@ -77,11 +79,11 @@
                 var $draggable = ui.draggable;
                 
                 // attr action of $ to extract the id of element.
-                var id = $draggable.attr('id');
+                var id = $draggable.attr('id'); //string: makeMeDraggable
                 console.log(id);
                 
                 //Objective: display ID of the draggable object in alert.
-                alert("I've been Dropped " + id);
+                alert("The square with ID " + id + " was dropped on me.");
             }
         </script>
     </head>
